@@ -3,18 +3,20 @@ import PropTypes from 'prop-types'
 
 import "./style.css"
 
-const Table = ({countries}) => {
+const Table = ({countries = []}) => {
     return (
-      <table className="Table">
-        <tbody>
-          {countries.map(({country, cases}, i) => (
-            <tr key={i}>
-              <td>{country}</td>
-              <td>{cases}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <div className="Table">
+        <table>
+          <tbody>
+            {countries.map(({country, cases}, i) => (
+              <tr key={i}>
+                <td>{country}</td>
+                <td>{cases}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     )
 }
 
