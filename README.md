@@ -1,3 +1,7 @@
+# Covid-19 Tracker interface
+
+![alt text](https://i.imgur.com/0H0IIU8.png)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
