@@ -1,5 +1,6 @@
 .InfoBox {
     flex: 1;
+    cursor: pointer;
 }
 
 .InfoBox:not(:last-child) {

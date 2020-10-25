@@ -5,6 +5,8 @@ import { Line } from 'react-chartjs-2'
 
 import { getHistoricalData } from '../../api'
 
+import './style.css'
+
 const LineGraph = ({ casesType }) => {
   const [data, setData] = useState({})
 
