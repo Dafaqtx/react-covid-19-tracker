@@ -1,6 +1,7 @@
 export const API_URL = "https://disease.sh/v3/covid-19"
 export const API_ALL = `${API_URL}/all`
 export const API_COUNTRIES = `${API_URL}/countries`
+export const API_HISTORICAL = `${API_URL}/historical/all`
 
 export const getData = async () => {
   try {
@@ -32,6 +33,17 @@ export const getCountriesData = async () => {
 export const fetchData = async (url) => {
   try {
     const response = await fetch(url);
+    const data = await response.json();
+
+    return data
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
+export const getHistoricalData = async (lastDays = 120) => {
+  try {
+    const response = await fetch(`${API_HISTORICAL}/?lastdays=${lastDays}`);
     const data = await response.json();
 
     return data

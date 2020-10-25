@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Card, CardContent, FormControl, MenuItem, Select } from '@material-ui/core';
 
-import { InfoBox, Map, Table } from './components';
+import { InfoBox, Map, Table, LineGraph } from './components';
 import { API_ALL, API_COUNTRIES, getData, getCountriesData, fetchData } from './api';
 
 import './App.css';
@@ -13,7 +13,7 @@ const App = () => {
   const [countryInfo, setCountryInfo] = useState({});
   const [tableData, setTableData] = useState([]);
   // const [mapCountries, setMapCountries] = useState([]);
-  // const [casesType, setCasesType] = useState("cases");
+  const [casesType, setCasesType] = useState("cases");
   // const [mapCenter, setMapCenter] = useState({ lat: 34.80746, lng: -40.4796 });
   // const [mapZoom, setMapZoom] = useState(3);
 
@@ -62,9 +62,25 @@ const App = () => {
         </div>
 
         <div className="app__stats">
-          <InfoBox title="Coronavirus cases" total={countryInfo.cases} cases={countryInfo.todayCases} />
-          <InfoBox title="Recovered" total={countryInfo.recovered} cases={countryInfo.todayRecovered} />
-          <InfoBox title="Deaths" total={countryInfo.deaths} cases={countryInfo.todayDeaths} isRed />
+          <InfoBox
+            onClick={() => setCasesType("cases")}
+            title="Coronavirus cases"
+            total={countryInfo.cases}
+            cases={countryInfo.todayCases}
+          />
+          <InfoBox
+            onClick={() => setCasesType("recovered")}
+            title="Recovered"
+            total={countryInfo.recovered}
+            cases={countryInfo.todayRecovered}
+          />
+          <InfoBox
+            onClick={() => setCasesType("deaths")}
+            title="Deaths"
+            total={countryInfo.deaths}
+            cases={countryInfo.todayDeaths}
+            isRed
+          />
         </div>
 
         <Map />
@@ -72,10 +88,12 @@ const App = () => {
       <Card className="app__right">
         <CardContent>
           <h3>Live Cases by Country</h3>
-          <Table countries={tableData} />
+          {tableData.length ? (
+            <Table countries={tableData} />
+          ) : 'Loading...'}
 
           <h3>Worldwide new cases</h3>
-            {/* {Graph} */}
+          <LineGraph casesType={casesType} />
         </CardContent>
       </Card>
     </div>
