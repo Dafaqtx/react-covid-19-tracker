@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { FormControl, MenuItem, Select } from '@material-ui/core';
 
-import {API_ALL, API_COUNTRIES, getData, getCountriesData} from './api'
+import { InfoBox } from './components';
+import { API_ALL, API_COUNTRIES, getData, getCountriesData } from './api';
 
 import './App.css';
 
@@ -45,13 +46,17 @@ const App = () => {
           >
             <MenuItem value="worldwide">Worldwide</MenuItem>
             {countries.map((country) => (
-              <MenuItem value={country.value}>{country.name}</MenuItem>
+              <MenuItem value={country.value} key={country.name}>{country.name}</MenuItem>
             ))}
           </Select>
         </FormControl>
       </div>
 
-      {/* {Title + Select input dropdown field} */}
+      <div className="app__stats">
+        <InfoBox title="Coronavirus cases" total={2000} cases={10000} />
+        <InfoBox title="Recovered" total={3000} cases={12000} />
+        <InfoBox title="Deaths" total={6000} cases={150000} />
+      </div>
 
       {/* {InfoBoxs} */}
       {/* {InfoBoxs} */}
