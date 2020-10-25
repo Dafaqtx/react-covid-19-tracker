@@ -22,7 +22,7 @@ export const getCountriesData = async () => {
       value: country.countryInfo.iso2,
     }));
 
-    return countries;
+    return {data, countries};
 
   } catch (error) {
     throw new Error(error)

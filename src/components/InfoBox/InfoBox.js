@@ -29,13 +29,15 @@ const InfoBox = ({ title, cases, total, active, isRed,...props }) => {
 
 InfoBox.propTypes = {
     title: PropTypes.string.isRequired,
-    cases: PropTypes.number.isRequired,
-    total: PropTypes.number.isRequired,
+    cases: PropTypes.number,
+    total: PropTypes.number,
     active: PropTypes.bool,
     isRed: PropTypes.bool,
 }
 
 InfoBox.defaultProps = {
+    total: 0,
+    cases: 0,
     active: false,
     isRed: false,
 }
